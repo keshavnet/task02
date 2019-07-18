@@ -1,0 +1,12 @@
+
+<p>Image list</p>
+
+<ul>
+    <li>test...</li>
+        {% for e in image_list %}
+            <li>test</li>
+            <li><img src="{{ e.url }}" alt=""></li>
+            <li>{{ e.name }}</li>
+            <li>{{ e.description }}</li>
+        {% endfor %}
+</ul>
