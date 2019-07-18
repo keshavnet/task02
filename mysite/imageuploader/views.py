@@ -39,12 +39,15 @@ def posted(request):
         filename = fs.save(myfile.name, myfile)
         image_url = fs.url(filename)
 
+        path = str(image_url)
+
         image_name = ''
         image_des = ''
 
-        image = ImageUpload(url=image_url, name=image_name, description=image_des)
+        image = ImageUpload(actual=path, name=image_name, description=image_des)
+        image.save()
         print('----------------------------------')
-        print('image_url ', image_url)
+        print('image_url ', path, type(path))
 
         return HttpResponse('Posted successfully!!!')
         
@@ -58,5 +61,6 @@ def ImageList(request):
 
     for e in image_list:
         print('name name name', e.name)
+        print('url url url', e.actual)
 
-    return render(request, 'imageuploader/imageList.html', {image_list: image_list})
+    return render(request, 'imageuploader/imageList.html', {'image_list': image_list})

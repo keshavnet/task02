@@ -1,12 +1,14 @@
-
-<p>Image list</p>
-
-<ul>
-    <li>test...</li>
-        {% for e in image_list %}
-            <li>test</li>
-            <li><img src="{{ e.url }}" alt=""></li>
-            <li>{{ e.name }}</li>
-            <li>{{ e.description }}</li>
-        {% endfor %}
+{% if image_list.length == 0 %}
+<h4>No image to show</h4>
+<a href="/image/imageUpload/"></a>
+{% else %}
+<h3>Image list</h3>
+{% for e in image_list %}
+<ul style="list-style-type: none;">
+    <li><img src="{{ e.actual }}" alt="e.actual" width="250" height="150"></li>
+    <li><b>Title: </b>{{ e.name }}</li>
+    <li><b>Description: </b>{{ e.description }}</li>
 </ul>
+<br><br>
+{% endfor %}
+{% endif %}

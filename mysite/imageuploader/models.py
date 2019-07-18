@@ -5,6 +5,7 @@ from django.db import models
 
 class ImageUpload(models.Model):
     url = models.FileField(upload_to='images/')
+    actual = models.CharField(max_length=1000)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=255)
 
