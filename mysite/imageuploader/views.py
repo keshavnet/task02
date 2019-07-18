@@ -14,44 +14,36 @@ def post(request):
 
 
 def postDetails(request):
-    image = []
-    return render(request, 'imageuploader/imageDetails.html',
-                  {'image': image})
+    image = ImageUpload.objects.get()
 
-# def posted(request):
-#         print('-------------------------------------')
-#         print(request.POST['image_name'])
-#         print(request.POST.get('image'))
-
-#         image_url =
-#         image_name = request.POST['image_name']
-#         image_des = request.POST['image_des']
-
-#         image = ImageUpload(name=image_name, description=image_des)
-#         image.save()
-#         return HttpResponse('Posted successfully!!!')
+    return render(request, 'imageuploader/imageDetails.html', {'image': image})
 
 
 def posted(request):
-#     if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        image_url = fs.url(filename)
+    #     if request.method == 'POST' and request.FILES['myfile']:
+    myfile = request.FILES['myfile']
+    fs = FileSystemStorage()
+    filename = fs.save(myfile.name, myfile)
+    image_url = fs.url(filename)
 
-        path = str(image_url)
+    path = str(image_url)
 
-        image_name = ''
-        image_des = ''
+    image_name = ''
+    image_des = ''
 
-        image = ImageUpload(actual=path, name=image_name, description=image_des)
-        image.save()
-        print('----------------------------------')
-        print('image_url ', path, type(path))
+    image = ImageUpload(actual=path, name=image_name, description=image_des)
+    image.save()
+    print('----------------------------------')
+    print('image_url ', path, type(path))
 
-        return HttpResponse('Posted successfully!!!')
-        
-#     return render(request, 'core/simple_upload.html')
+    return HttpResponse('Posted successfully!!!')
+
+
+def editPost(request, postId):
+    print('-----------------------')
+    print('post edited successfully!!!!!!!!!', postId)
+    post = ImageUpload.objects.get(pk=postId)
+    return 0
 
 
 def ImageList(request):

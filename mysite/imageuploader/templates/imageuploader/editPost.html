@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h3>Add Post</h3>
+    <h3>Edit Post</h3>
 
     <form method="post" action="/image/postSuccessfully/" enctype="multipart/form-data">
         {% csrf_token %}
@@ -25,24 +25,7 @@
         <br><br>
         <button type="submit">Upload</button>
     </form>
-    <!-- <form method="post" action="/image/postSuccessfully/" enctype="multipart/form-data">
-        {% csrf_token %}
-       
-        <input type="file" name="image" value="image" 
-        accept="image/*" id="">
-        <br><br>
-        
-        <label for="image_name">Image Name: </label>
-        <input type="text" name="image_name" id="">
-        <br><br>
-
-        <label for="image_des">Image Description: </label>
-        <br>
-        <textarea name="image_des" id="" cols="30" rows="5"></textarea>
-        <br><br>
-        <button type="submit">Save</button>
-
-    </form> -->
+   
 </body>
 
 </html>

@@ -5,9 +5,12 @@
 <h3>Image list</h3>
 {% for e in image_list %}
 <ul style="list-style-type: none;">
-    <li><img src="{{ e.actual }}" alt="e.actual" width="250" height="150"></li>
+    <li style="cursor: pointer">
+        <img type="submit" src="{{ e.actual }}" alt="{{ e.actual }}" width="250" height="150">
+    </li>
     <li><b>Title: </b>{{ e.name }}</li>
     <li><b>Description: </b>{{ e.description }}</li>
+    <li><a href="/image/editPost/{{e.id}}/"><button>Edit</button></li></a>
 </ul>
 <br><br>
 {% endfor %}
