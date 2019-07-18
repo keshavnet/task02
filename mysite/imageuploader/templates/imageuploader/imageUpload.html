@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel_image</title>
+</head>
+
+<body>
+    <h3>Upload Image</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="button">Upload</button>
+        <br><br>
+        
+        <label for="image_name">Image Name:</label>
+        <input type="text" name="image_name" id="">
+        <br><br>
+
+        <label for="image_des">Image Description</label>
+        <textarea name="image_des" id="" cols="30" rows="5"></textarea>
+        
+
+    </form>
+</body>
+
+</html>
