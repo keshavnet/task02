@@ -8,22 +8,26 @@
 
 <body>
     <h3>Edit Post</h3>
-
-    <form method="post" action="/image/postSuccessfully/" enctype="multipart/form-data">
+    <h1>{{post_detail.name}}</h1>
+    <form method="post" action="/image/update/" enctype="multipart/form-data">
         {% csrf_token %}
+        <img src="{{post_detail.actual}}" alt="{{post_detail.actual}}">
         <input type="file" name="myfile">
 
         <br><br>
         <label for="image_name">Image Name: </label>
-        <input type="text" name="image_name" id="">
+        <input type="text" name="image_name" id="" value="{{post_detail.name}}">
         <br><br>
 
 
         <label for="image_des">Image Description: </label>
         <br>
-        <textarea name="image_des" id="" cols="30" rows="5"></textarea>
+        <textarea name="image_des" id="" cols="30" rows="5">
+            {{post_detail.description}}
+        </textarea>
+        <input type="hidden" name="post_id" value="{{post_detail.id}}">
         <br><br>
-        <button type="submit">Upload</button>
+        <button type="submit">Update</button>
     </form>
    
 </body>

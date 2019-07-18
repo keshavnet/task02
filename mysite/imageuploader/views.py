@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from django.core.files.storage import FileSystemStorage
@@ -13,10 +13,10 @@ def post(request):
     return render(request, 'imageuploader/imageUpload.html')
 
 
-def postDetails(request):
-    image = ImageUpload.objects.get()
+# def postDetails(request):
+#     image = ImageUpload.objects.get()
 
-    return render(request, 'imageuploader/imageDetails.html', {'image': image})
+#     return render(request, 'imageuploader/imageDetails.html', {'image': image})
 
 
 def posted(request):
@@ -39,20 +39,20 @@ def posted(request):
     return HttpResponse('Posted successfully!!!')
 
 
-def editPost(request, postId):
-    print('-----------------------')
-    print('post edited successfully!!!!!!!!!', postId)
-    post = ImageUpload.objects.get(pk=postId)
+
+def update(request):
+    
     return 0
+    
+
+def editPost(request, post_id):
+    post = ImageUpload.objects.get(pk=post_id)
+    print('----------------------- post ', post.name)
+    print('post edited successfully!!!!!!!!!', post_id)
+    
+    return render(request, 'imageuploader/editPost.html', {'post_detail': post})
 
 
 def ImageList(request):
     image_list = ImageUpload.objects.all()
-    print('-------------------------------')
-    print(image_list)
-
-    for e in image_list:
-        print('name name name', e.name)
-        print('url url url', e.actual)
-
     return render(request, 'imageuploader/imageList.html', {'image_list': image_list})

@@ -3,9 +3,10 @@ from . import views
 
 app_name = 'imageuploader'
 urlpatterns = [
-    path('editPost/<:postId>/', views.editPost, name='editPost'),
+    path('editPost/<str:post_id>/', views.editPost, name='editPost'),
     path('imageUpload/', views.post, name='post'),
-    path('imageDetails/', views.postDetails, name='postDetails'),
+    # path('imageDetails/', views.postDetails, name='postDetails'),
     path('postSuccessfully/', views.posted, name='posted'),
+    path('update/', views.update, name='update'),
     path('imageList/', views.ImageList, name='imageList'),
 ]
