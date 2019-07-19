@@ -39,17 +39,32 @@ def posted(request):
     return HttpResponse('Posted successfully!!!')
 
 
+def update(request, post_id):
+    post = ImageUpload.objects.get(pk=post_id)
+    print('---------------------------------', request.POST)
+    # if request.POST['myfile']:
+    myfile = request.FILES['myfile']
+    fs = FileSystemStorage()
+    filename = fs.save(myfile.name, myfile)
+    image_url = fs.url(filename)
+    path = str(image_url)
 
-def update(request):
-    
-    return 0
-    
+    post.actual = path
+
+    print('image_url ', image_url)
+
+    post.name = request.POST['image_name']
+    post.description = request.POST['image_des']
+    post.save()
+    print('updated')
+    return HttpResponse('Post updated successfully!')
+
 
 def editPost(request, post_id):
     post = ImageUpload.objects.get(pk=post_id)
     print('----------------------- post ', post.name)
     print('post edited successfully!!!!!!!!!', post_id)
-    
+
     return render(request, 'imageuploader/editPost.html', {'post_detail': post})
 
 

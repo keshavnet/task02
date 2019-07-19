@@ -1,17 +1,42 @@
-{% if image_list.length == 0 %}
-<h4>No image to show</h4>
-<a href="/image/imageUpload/"></a>
-{% else %}
-<h3>Image list</h3>
-{% for e in image_list %}
-<ul style="list-style-type: none;">
+<head>
+  <meta charset="UTF-8">
+  <title>Post_image</title>
+  <style>
+    nav>ul>li {
+      display: inline;
+    }
+
+    nav>ul>li>a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <nav>
+    <ul style="display:inline;">
+      <li><a href="/image/imageUpload/">Add Post</a></li>
+      <li><a href="/image/imageList/">All Post</a></li>
+    </ul>
+  </nav>
+
+  {% if image_list.length == 0 %}
+  <h4>No image to show</h4>
+  <a href="/image/imageUpload/"></a>
+  {% else %}
+  <h3>Image list</h3>
+  {% for e in image_list %}
+  <ul style="list-style-type: none;">
     <li style="cursor: pointer">
-        <img type="submit" src="{{ e.actual }}" alt="{{ e.actual }}" width="250" height="150">
+      <img type="submit" src="{{ e.actual }}" alt="{{ e.actual }}" width="250" height="150">
     </li>
     <li><b>Title: </b>{{ e.name }}</li>
     <li><b>Description: </b>{{ e.description }}</li>
     <li><a href="/image/editPost/{{e.id}}/"><button>Edit</button></li></a>
   </ul>
-<br><br>
-{% endfor %}
-{% endif %}
+  <br><br>
+  {% endfor %}
+  {% endif %}
+</body>

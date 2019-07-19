@@ -4,16 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Post_image</title>
+    <style>
+        ul> li {
+            display: inline;
+        }
+
+        ul>li>a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="/image/imageUpload/">Add Post</a></li>
+            <li><a href="/image/imageList/">All Post</a></li>
+        </ul>
+    </nav>
     <h3>Edit Post</h3>
     <h1>{{post_detail.name}}</h1>
-    <form method="post" action="/image/update/" enctype="multipart/form-data">
+    <form method="post" action="/image/update/{{post_detail.id}}/" enctype="multipart/form-data">
         {% csrf_token %}
-        <img src="{{post_detail.actual}}" alt="{{post_detail.actual}}">
-        <input type="file" name="myfile">
-
+        <img src="{{post_detail.actual}}" alt="{{post_detail.actual}}" width="300" height="180">
+       <br>
+       <label for="myfile">Change image:</label>
+        <input type="file" name="myfile" value="{{post_detail.myfile}}">
+        <input type="hidden" name="actual" value="{{post_detail.actual}}">
         <br><br>
         <label for="image_name">Image Name: </label>
         <input type="text" name="image_name" id="" value="{{post_detail.name}}">
@@ -25,7 +42,7 @@
         <textarea name="image_des" id="" cols="30" rows="5">
             {{post_detail.description}}
         </textarea>
-        <input type="hidden" name="post_id" value="{{post_detail.id}}">
+
         <br><br>
         <button type="submit">Update</button>
     </form>

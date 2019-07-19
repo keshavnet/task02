@@ -4,9 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Post_image</title>
+
+    <style>
+        ul>li {
+            display: inline;
+        }
+
+        ul>li>a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="/image/imageUpload/">Add Post</a></li>
+            <li><a href="/image/imageList/">All Post</a></li>
+        </ul>
+    </nav>
     <h3>Add Post</h3>
 
     <form method="post" action="/image/postSuccessfully/" enctype="multipart/form-data">
